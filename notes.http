@@ -1,0 +1,97 @@
+### Sunucu saglik kontrolu
+GET http://localhost:3000/health
+
+###
+
+### Tum notlari listele
+GET http://localhost:3000/notes
+
+###
+
+### Baslikta arama yap (?q=)
+GET http://localhost:3000/notes?q=express
+
+###
+
+### Tek not getir (var olan id)
+GET http://localhost:3000/notes/1
+
+###
+
+### Tek not getir (olmayan id -> 404)
+GET http://localhost:3000/notes/999
+
+###
+
+### Yeni not olustur (201)
+POST http://localhost:3000/notes
+Content-Type: application/json
+
+{
+  "title": "Ilk notum",
+  "content": "Express ile API yazmak gercekten ogretic"
+}
+
+###
+
+### Gecersiz not olustur - title eksik (400)
+POST http://localhost:3000/notes
+Content-Type: application/json
+
+{
+  "content": "basliksiz not"
+}
+
+###
+
+### Gecersiz not olustur - title bos (400)
+POST http://localhost:3000/notes
+Content-Type: application/json
+
+{
+  "title": "   ",
+  "content": "bos baslik"
+}
+
+###
+
+### Notu guncelle (200)
+PUT http://localhost:3000/notes/1
+Content-Type: application/json
+
+{
+  "title": "Guncellenmis baslik",
+  "content": "Yeni icerik burada"
+}
+
+###
+
+### Notu guncelle - olmayan id (404)
+PUT http://localhost:3000/notes/999
+Content-Type: application/json
+
+{
+  "title": "Hayalet not"
+}
+
+###
+
+### Notu guncelle - gecersiz body (400)
+PUT http://localhost:3000/notes/1
+Content-Type: application/json
+
+{
+  "title": ""
+}
+
+###
+
+### Notu sil (204)
+DELETE http://localhost:3000/notes/1
+
+###
+
+### Notu sil - olmayan id (404)
+DELETE http://localhost:3000/notes/999
+
+###

@@ -1,0 +1,6 @@
+node_modules/
+*.ogrenme.html
+ogrenme.html
+*.db
+*.db-shm
+*.db-wal

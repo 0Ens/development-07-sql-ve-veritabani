@@ -1,0 +1,30 @@
+{
+  "name": "development-07-sql-ve-veritabani",
+  "version": "1.0.0",
+  "description": "Notlar API'si — in-memory yerine SQLite kalıcı depolama, kategoriler ve JOIN sorgusu.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0Ens/development-07-sql-ve-veritabani.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/0Ens/development-07-sql-ve-veritabani/issues"
+  },
+  "homepage": "https://github.com/0Ens/development-07-sql-ve-veritabani#readme",
+  "dependencies": {
+    "better-sqlite3": "^11.10.0",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "jest": "^30.5.2",
+    "supertest": "^7.3.0"
+  }
+}
