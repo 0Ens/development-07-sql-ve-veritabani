@@ -2,6 +2,7 @@ const express = require('express');
 const logger = require('./middleware/logger');
 const errorHandler = require('./middleware/errorHandler');
 const notesRouter = require('./routes/notes');
+const categoriesRouter = require('./routes/categories');
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.get('/health', (req, res) => {
 });
 
 app.use('/notes', notesRouter);
+app.use('/categories', categoriesRouter);
 
 // 3. Merkezi hata middleware — tum route'lardan SONRA gelmeli
 app.use(errorHandler);
