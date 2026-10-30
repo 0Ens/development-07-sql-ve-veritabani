@@ -12,7 +12,7 @@ function validateNote(body) {
 
 // GET /notes — tum notlari kategori adiyla listele (LEFT JOIN)
 router.get('/', (req, res) => {
-  res.json(repo.listNotes());
+  res.json(repo.listNotes(req.query.q));
 });
 
 // GET /notes/:id — tek not getir

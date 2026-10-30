@@ -9,16 +9,18 @@ function createNote(title, content = '', categoryId = null) {
   return getNote(result.lastInsertRowid);
 }
 
-function listNotes() {
+function listNotes(q) {
   const db = getDb();
   // LEFT JOIN: kategorisi olmayan notlar da listelenir, category_name null gelir
+  // q verilirse basligin icinde buyuk/kucuk harf duyarsiz arar
   return db.prepare(`
     SELECT n.id, n.title, n.content, n.category_id, n.created_at,
            c.name AS category_name
     FROM notes n
     LEFT JOIN categories c ON c.id = n.category_id
+    WHERE @q IS NULL OR instr(lower(n.title), lower(@q)) > 0
     ORDER BY n.id
-  `).all();
+  `).all({ q: q || null });
 }
 
 function getNote(id) {
