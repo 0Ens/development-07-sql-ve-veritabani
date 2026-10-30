@@ -1,10 +1,21 @@
 const request = require('supertest');
-const app = require('../src/app');
-const notesRouter = require('../src/routes/notes');
 
-// Her testten once bellegi temizle
+// API testleri dosyaya degil :memory: veritabanina yazsin
+jest.mock('../src/db', () => {
+  const Database = require('better-sqlite3');
+  const { setup } = jest.requireActual('../src/db');
+  const db = new Database(':memory:');
+  db.pragma('foreign_keys = ON');
+  setup(db);
+  return { getDb: () => db, setup, closeDb: () => db.close() };
+});
+
+const app = require('../src/app');
+const { getDb } = require('../src/db');
+
+// Her testten once tablolari temizle
 beforeEach(() => {
-  notesRouter.reset();
+  getDb().exec('DELETE FROM notes; DELETE FROM categories;');
 });
 
 // --- Yardimci ---

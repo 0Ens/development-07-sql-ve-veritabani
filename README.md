@@ -42,7 +42,7 @@ npm start        # http://localhost:3000
 
 | Method | URL | Açıklama |
 |--------|-----|----------|
-| GET    | /notes | Tüm notları kategori adıyla listele |
+| GET    | /notes | Tüm notları kategori adıyla listele (`?q=kelime` başlıkta arar) |
 | GET    | /notes/:id | Tek not getir |
 | POST   | /notes | Yeni not oluştur |
 | PUT    | /notes/:id | Notu güncelle |
@@ -63,7 +63,7 @@ npm start        # http://localhost:3000
 npm test
 ```
 
-6 birim testi `:memory:` SQLite ile çalışır; dosya oluşturmaz, her test temiz veritabanı kurar.
+21 test `:memory:` SQLite ile çalışır; dosya oluşturmaz, her test temiz veritabanı kurar. 6 birim testi repository katmanını (aşağıdaki tablo), 15 API testi de `tests/notes.test.js` içinde endpoint'leri doğrular.
 
 | # | Test | Kanıtladığı |
 |---|------|-------------|
